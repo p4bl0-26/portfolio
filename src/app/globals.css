@@ -37,8 +37,8 @@
 }
 
 /* Light mode */
-.light {
-  --bg-base: #ffffff;
+:root.light, [data-theme="light"] {
+  --bg-base: #fafaf8;
   --bg-card: #f9f9f9;
   --bg-card-hover: #f1f1f1;
   --bg-nav: rgba(255, 255, 255, 0.85);

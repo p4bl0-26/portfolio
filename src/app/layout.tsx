@@ -29,10 +29,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(META.url),
-  title: {
-    default: META.title,
-    template: `%s — Himank Garg`,
-  },
+  title: "Himank Garg",
   description: META.description,
   openGraph: {
     type: "website",
