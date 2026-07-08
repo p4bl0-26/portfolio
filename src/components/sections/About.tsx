@@ -21,7 +21,7 @@ const TIMELINE = [
   {
     date: "2026",
     label: "Vibe2Ship Hackathon",
-    sublabel: "Built Optimus (AI Chief of Staff) in 48 hours",
+    sublabel: "Built Optimus (AI Chief of Staff) in 7 days",
     note: "Cross-platform",
     ongoing: false,
   },

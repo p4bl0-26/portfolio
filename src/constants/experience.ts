@@ -5,7 +5,7 @@ export const EXPERIENCE: ExperienceEntry[] = [
     id: "buildbazaarx-dev",
     role: "Flutter Developer — Professional App",
     org: "BuildBazaarX",
-    orgUrl: "https://github.com/Rishit0612/BuildBazaarX_app",
+    orgUrl: "https://github.com/p4bl0-26/Builder_professional",
     period: "2026 — Present",
     type: "work",
     description:
@@ -24,7 +24,7 @@ export const EXPERIENCE: ExperienceEntry[] = [
     period: "2026",
     type: "hackathon",
     description:
-      "Built Optimus — an AI Chief of Staff — at the Vibe2Ship hackathon. Shipped a working cross-platform product (Next.js web + Flutter mobile) in 48 hours using Gemini and Supabase.",
+      "Built Optimus — an AI Chief of Staff — at the Vibe2Ship hackathon. Shipped a working cross-platform product (Next.js web + Flutter mobile) in 7 days using Gemini and Supabase.",
     highlights: [
       "AI commitment extraction from calendar and messages",
       "Real-time deadline risk prediction",

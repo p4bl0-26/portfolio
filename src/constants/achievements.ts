@@ -21,9 +21,9 @@ export const ACHIEVEMENTS: Achievement[] = [
   },
   {
     id: "vibe2ship",
-    title: "Shipped Vibe2Ship Hackathon build in 48 hours",
-    description: "Built Optimus — an AI Chief of Staff (Next.js + Flutter + Gemini) — as a working cross-platform product within the hackathon window.",
-    date: "2025",
+    title: "Built Optimus in 7 days for Vibe2Ship",
+    description: "Built Optimus — an AI Chief of Staff (Next.js + Flutter + Gemini) — as a working cross-platform product over 7 days at the Vibe2Ship hackathon.",
+    date: "2026",
     org: "HACKATHON",
     link: "https://optimus-gray.vercel.app/",
     linkText: "View project ↗",
