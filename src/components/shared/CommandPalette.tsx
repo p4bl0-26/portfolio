@@ -27,7 +27,12 @@ const PALETTE_ACTIONS = [
     id: "download-resume",
     label: "Download resume",
     hint: META.resumePath,
-    action: () => window.open(META.resumePath, "_blank"),
+    action: () => {
+      const link = document.createElement("a");
+      link.href = META.resumePath;
+      link.download = "Himank_Garg_Resume.pdf";
+      link.click();
+    },
   },
   {
     id: "linkedin",

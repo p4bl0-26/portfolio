@@ -33,62 +33,103 @@ export function Resume() {
       </h2>
 
       <div
-        className="flex flex-col md:flex-row gap-8 items-start"
+        className="flex flex-col md:flex-row gap-8 lg:gap-16 items-start"
         style={{ borderTop: "1px solid var(--border)", paddingTop: "2.5rem" }}
       >
         {/* Preview card */}
-        <div
-          className="w-full md:w-64 flex-shrink-0"
-          style={{
-            backgroundColor: "var(--bg-card)",
-            border: "1px solid var(--border)",
-            borderRadius: "6px",
-            aspectRatio: "210/297", // A4 ratio
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "1rem",
-            position: "relative",
-            overflow: "hidden",
-          }}
-          aria-label="Resume preview"
-        >
-          {/* Grid background */}
+        <div className="w-full md:w-[320px] lg:w-[400px] flex-shrink-0">
+          {/* Desktop embed (hidden on mobile) */}
           <div
-            className="absolute inset-0"
+            className="hidden md:block w-full"
             style={{
-              backgroundImage: `
-                linear-gradient(var(--border) 1px, transparent 1px),
-                linear-gradient(90deg, var(--border) 1px, transparent 1px)
-              `,
-              backgroundSize: "20px 20px",
-              opacity: 0.5,
+              backgroundColor: "var(--bg-card)",
+              border: "1px solid var(--border)",
+              borderRadius: "6px",
+              aspectRatio: "1/1.414", // A4 ratio
+              overflow: "hidden",
             }}
-            aria-hidden="true"
-          />
-          <div className="relative flex flex-col items-center gap-3">
-            <FileText
-              size={32}
-              style={{ color: "var(--text-muted)", opacity: 0.5 }}
-            />
-            <span
+          >
+            <object
+              data={`${META.resumePath}#toolbar=0&navpanes=0&scrollbar=0`}
+              type="application/pdf"
+              width="100%"
+              height="100%"
+            >
+              <div className="w-full h-full flex flex-col items-center justify-center gap-3 p-6 text-center">
+                <FileText size={32} style={{ color: "var(--text-muted)", opacity: 0.5 }} />
+                <p style={{ color: "var(--text-secondary)", fontSize: "0.875rem" }}>
+                  Unable to display PDF file.
+                </p>
+                <a
+                  href={META.resumePath}
+                  download="Himank_Garg_Resume.pdf"
+                  style={{ color: "var(--accent)", fontSize: "0.875rem", textDecoration: "underline" }}
+                >
+                  Download instead
+                </a>
+              </div>
+            </object>
+          </div>
+
+          {/* Mobile simple card (hidden on desktop) */}
+          <div
+            className="md:hidden w-full flex items-center justify-between p-4"
+            style={{
+              backgroundColor: "var(--bg-card)",
+              border: "1px solid var(--border)",
+              borderRadius: "6px",
+            }}
+          >
+            <div className="flex items-center gap-3 overflow-hidden">
+              <FileText size={20} style={{ color: "var(--text-muted)", flexShrink: 0 }} />
+              <div className="flex flex-col overflow-hidden">
+                <span
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: "0.875rem",
+                    color: "var(--text-primary)",
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                  }}
+                >
+                  Himank_Garg_Resume.pdf
+                </span>
+                <span
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "10px",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.05em",
+                    color: "var(--text-muted)",
+                  }}
+                >
+                  439 KB
+                </span>
+              </div>
+            </div>
+            <a
+              href={META.resumePath}
+              download="Himank_Garg_Resume.pdf"
+              aria-label="Download Himank_Garg_Resume.pdf"
               style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: "10px",
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                color: "var(--text-muted)",
+                color: "var(--accent)",
+                padding: "8px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                borderRadius: "4px",
+                backgroundColor: "rgba(255,255,255,0.05)",
+                flexShrink: 0,
               }}
             >
-              {/* TODO: Replace with actual resume PDF preview */}
-              Himank_Garg_Resume.pdf
-            </span>
+              <Download size={16} />
+            </a>
           </div>
         </div>
 
         {/* Info + download */}
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 md:pt-4">
           <div>
             <h3
               style={{
@@ -128,31 +169,44 @@ export function Resume() {
             </p>
           </div>
 
-          <a
-            href={META.resumePath} // TODO: Point to actual resume PDF
-            target="_blank"
-            rel="noopener noreferrer"
-            download="Himank_Garg_Resume.pdf"
-            className="inline-flex items-center gap-2.5 w-fit px-5 py-2.5 rounded-md transition-all duration-200"
-            style={{
-              backgroundColor: "var(--accent)",
-              color: "var(--text-on-accent)",
-              fontFamily: "var(--font-body)",
-              fontSize: "14px",
-              fontWeight: 500,
-              textDecoration: "none",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.opacity = "0.88";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.opacity = "1";
-            }}
-            aria-label="Download Himank Garg's resume PDF"
-          >
-            <Download size={14} />
-            Download Resume
-          </a>
+          <div className="flex flex-col gap-2 items-start mt-2">
+            <a
+              href={META.resumePath}
+              target="_blank"
+              rel="noopener noreferrer"
+              download="Himank_Garg_Resume.pdf"
+              className="inline-flex items-center gap-2.5 w-fit px-6 py-3 rounded-md transition-all duration-200"
+              style={{
+                backgroundColor: "var(--accent)",
+                color: "var(--text-on-accent)",
+                fontFamily: "var(--font-body)",
+                fontSize: "15px",
+                fontWeight: 500,
+                textDecoration: "none",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.opacity = "0.88";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.opacity = "1";
+              }}
+              aria-label="Download Himank Garg's resume PDF"
+            >
+              <Download size={16} />
+              Download Resume
+            </a>
+            <span
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "10px",
+                textTransform: "uppercase",
+                letterSpacing: "0.05em",
+                color: "var(--text-muted)",
+              }}
+            >
+              last updated: July 2026
+            </span>
+          </div>
         </div>
       </div>
     </SectionWrapper>

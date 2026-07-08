@@ -215,9 +215,9 @@ export function Hero() {
             </motion.span>
           </motion.a>
 
-          {/* Secondary — ghost */}
           <a
             href={META.resumePath}
+            download="Himank_Garg_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center rounded-md transition-all duration-200 focus-visible:outline-none"
