@@ -64,7 +64,7 @@ export const PROJECTS: Project[] = [
       "AI-powered tampering explanations",
       "QR code verification flow",
     ],
-    status: "wip",
+    status: "live",
     links: {
       github: undefined, // TODO: Add GitHub link
       demo: undefined, // TODO: Add live demo link
@@ -88,7 +88,7 @@ export const PROJECTS: Project[] = [
       "Quiz and study material hub",
       "Semester resource organizer",
     ],
-    status: "live",
+    status: "wip",
     links: {
       github: "https://github.com/Rishit0612/Sortd",
     },

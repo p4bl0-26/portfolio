@@ -6,7 +6,7 @@ export const EXPERIENCE: ExperienceEntry[] = [
     role: "Flutter Developer — Professional App",
     org: "BuildBazaarX",
     orgUrl: "https://github.com/Rishit0612/BuildBazaarX_app",
-    period: "2025 — Present",
+    period: "2026 — Present",
     type: "work",
     description:
       "Sole developer of the BuildBazaarX Professional mobile app. Architected the entire Flutter codebase from scratch: Supabase auth, real-time data sync, dashboard screens, profile management, and a reusable component library.",
@@ -21,7 +21,7 @@ export const EXPERIENCE: ExperienceEntry[] = [
     id: "vibe2ship-optimus",
     role: "Fullstack Developer (Hackathon)",
     org: "Vibe2Ship — Optimus",
-    period: "2025",
+    period: "2026",
     type: "hackathon",
     description:
       "Built Optimus — an AI Chief of Staff — at the Vibe2Ship hackathon. Shipped a working cross-platform product (Next.js web + Flutter mobile) in 48 hours using Gemini and Supabase.",
