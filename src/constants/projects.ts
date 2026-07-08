@@ -16,6 +16,11 @@ export const PROJECTS: Project[] = [
       "Seller dashboard and order management",
       "Profile and listing management",
     ],
+    challenges: [
+      // [VERIFY: adjust to what Himank actually hit]
+      "The hardest part was the payment flow. Razorpay's checkout is straightforward until you handle the unhappy paths — dismissed checkouts, network drops mid-payment, and making sure the order state never says 'paid' unless the payment is actually verified server-side. I learned to never trust a client-side success callback for anything that matters.",
+      "Auth was the other lesson: session persistence and route guarding in Flutter with Supabase sounds simple, but edge cases like expired tokens mid-session forced me to centralize auth state instead of checking it per-screen.",
+    ],
     status: "live",
     links: {
       github: "https://github.com/Rishit0612/BuildBazaarX_app",
@@ -39,6 +44,11 @@ export const PROJECTS: Project[] = [
       "Deadline risk prediction with confidence scores",
       "Auto-generated execution plans",
       "Cross-platform: web + mobile",
+    ],
+    challenges: [
+      // [VERIFY]
+      "48 hours forces brutal prioritization. We cut features every few hours to keep one end-to-end flow actually working: commitment discovery → risk prediction → execution plan. Prompting Gemini to return reliably structured output was harder than any UI work — free-text responses break parsers, so everything became strict JSON with fallback handling.",
+      "Biggest learning: a working demo of a narrow product beats a broken demo of an ambitious one.",
     ],
     status: "wip",
     links: {
@@ -64,6 +74,11 @@ export const PROJECTS: Project[] = [
       "AI-powered tampering explanations",
       "QR code verification flow",
     ],
+    challenges: [
+      // [VERIFY]
+      "Getting the hash-anchor-verify loop trustworthy was the core challenge — a verification product is worthless if the verification can be doubted. SHA-256 fingerprinting is deterministic, but wiring wallet connection, on-chain writes, and QR-based lookup into a flow a non-crypto user can complete in seconds took most of the build.",
+      "Also learned at the pitch: building a great product and presenting one are different skills — we cleared Round 1 among 200+ participants, and the judging taught me as much as the build.",
+    ],
     status: "live",
     links: {
       github: undefined, // TODO: Add GitHub link
@@ -88,12 +103,41 @@ export const PROJECTS: Project[] = [
       "Quiz and study material hub",
       "Semester resource organizer",
     ],
+    challenges: [
+      // [VERIFY: describe the actual mechanism used]
+      "Shipping in 7 days meant choosing boring technology and zero scope creep. The WhatsApp reminder automation was the interesting problem — triggering a message reliably on a user-set date without a dedicated server.",
+      "Learned that a small app people actually open daily beats a feature-rich one they abandon.",
+    ],
     status: "wip",
     links: {
       github: "https://github.com/Rishit0612/Sortd",
     },
     image: "/images/projects/sortd.jpeg",
     imageAlt: "Sortd campus utility app home dashboard",
+    imageType: "mobile",
+  },
+  {
+    id: "gradegravity",
+    index: "05",
+    title: "GradeGravity",
+    subtitle: "Flutter · Dart",
+    description:
+      "A GPA calculator built specifically for LNMIIT students — encoding the actual curriculum: every branch, every semester, every credit weight, and all the exceptions. No generic calculator guesswork.",
+    tags: ["Flutter", "Dart"],
+    category: ["Mobile"],
+    features: [
+      "Full LNMIIT curriculum encoded per branch and semester",
+      "Handles flexible semesters, S/F courses, and thesis credits",
+      "Accurate CGPA and SGPA calculation",
+      "Clean, distraction-free UI",
+    ],
+    challenges: [
+      "The real work was data, not code: encoding LNMIIT's actual curriculum — every branch, every semester, every credit weight — and handling the exceptions (flexible semesters, S/F courses, thesis credits). Learned that 'simple' tools are mostly domain-knowledge problems wearing a UI.",
+    ],
+    status: "wip",
+    links: {},
+    image: null,
+    imageAlt: "GradeGravity LNMIIT GPA calculator",
     imageType: "mobile",
   },
 ];

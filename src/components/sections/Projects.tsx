@@ -427,6 +427,7 @@ function ProjectRow({
                 transition={{ type: "spring", stiffness: 280, damping: 30 }}
                 style={{ overflow: "hidden" }}
               >
+                {/* Features list */}
                 <ul
                   className="mt-4 flex flex-col gap-2"
                   style={{ paddingLeft: "1rem" }}
@@ -455,6 +456,40 @@ function ProjectRow({
                     </li>
                   ))}
                 </ul>
+
+                {/* Challenges & Learnings */}
+                {project.challenges && project.challenges.length > 0 && (
+                  <div className="mt-6" style={{ paddingLeft: "1rem" }}>
+                    {/* Eyebrow label */}
+                    <p
+                      style={{
+                        fontFamily: "var(--font-mono)",
+                        fontSize: "10px",
+                        textTransform: "uppercase",
+                        letterSpacing: "0.12em",
+                        color: "var(--text-muted)",
+                        marginBottom: "0.75rem",
+                      }}
+                    >
+                      Challenges &amp; Learnings
+                    </p>
+                    {/* Narrative paragraphs */}
+                    <div className="flex flex-col gap-3">
+                      {project.challenges.map((para, idx) => (
+                        <p
+                          key={idx}
+                          style={{
+                            fontSize: "0.875rem",
+                            color: "var(--text-secondary)",
+                            lineHeight: 1.75,
+                          }}
+                          /* [VERIFY] markers are HTML comments — invisible in browser */
+                          dangerouslySetInnerHTML={{ __html: para }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
               </motion.div>
             )}
           </AnimatePresence>

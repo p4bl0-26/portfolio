@@ -7,6 +7,8 @@ export interface Project {
   tags: string[];
   category: ("Mobile" | "AI" | "Web3" | "Full-Stack")[];
   features: string[];
+  /** First-person engineering narrative paragraphs for the "Challenges & Learnings" case-study block. */
+  challenges?: string[];
   status: "live" | "pre-release" | "wip";
   links: {
     github?: string;
