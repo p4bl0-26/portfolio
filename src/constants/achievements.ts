@@ -12,8 +12,8 @@ export const ACHIEVEMENTS: Achievement[] = [
   },
   {
     id: "codeforces",
-    title: "Codeforces — 138 problems, 38-day streak",
-    description: "138 problems solved with a 38-day daily streak — consistent competitive programming practice.",
+    title: "Codeforces — 138+ problems, 38-day streak",
+    description: "138+ problems solved with a 38-day daily streak — consistent competitive programming practice.",
     date: "ONGOING",
     org: "CP",
     link: "https://codeforces.com/profile/PABLO_19",
