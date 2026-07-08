@@ -57,7 +57,7 @@ export function Experience() {
             }}
             // hairline border between entries, generous vertical padding
             style={{
-              borderTop: "1px solid rgba(255,255,255,0.10)",
+              borderTop: "1px solid var(--border)",
               paddingTop: "4rem",
               paddingBottom: "4rem",
             }}
@@ -94,7 +94,7 @@ export function Experience() {
                     style={{
                       fontFamily: "var(--font-mono)",
                       fontSize: "clamp(0.8rem, 1.2vw, 1rem)",
-                      color: "rgba(255,255,255,0.4)",
+                      color: "var(--text-muted)",
                       letterSpacing: "0.04em",
                       lineHeight: 1.4,
                       whiteSpace: "nowrap",
@@ -110,8 +110,8 @@ export function Experience() {
                       fontSize: "10px",
                       textTransform: "uppercase",
                       letterSpacing: "0.1em",
-                      color: "rgba(255,255,255,0.3)",
-                      border: "1px solid rgba(255,255,255,0.1)",
+                      color: "var(--text-muted)",
+                      border: "1px solid var(--border)",
                       padding: "2px 8px",
                       borderRadius: "3px",
                       display: "inline-block",
@@ -131,17 +131,17 @@ export function Experience() {
                       style={{
                         fontFamily: "var(--font-mono)",
                         fontSize: "12px",
-                        color: "rgba(255,255,255,0.45)",
+                        color: "var(--text-muted)",
                         textDecoration: "none",
                         letterSpacing: "0.03em",
                         alignSelf: "flex-start",
                         transition: "color 0.15s",
                       }}
                       onMouseEnter={(e) =>
-                        (e.currentTarget.style.color = "rgba(255,255,255,0.8)")
+                        (e.currentTarget.style.color = "var(--text-primary)")
                       }
                       onMouseLeave={(e) =>
-                        (e.currentTarget.style.color = "rgba(255,255,255,0.45)")
+                        (e.currentTarget.style.color = "var(--text-muted)")
                       }
                     >
                       {entry.org}
@@ -155,7 +155,7 @@ export function Experience() {
                       style={{
                         fontFamily: "var(--font-mono)",
                         fontSize: "12px",
-                        color: "rgba(255,255,255,0.45)",
+                        color: "var(--text-muted)",
                         letterSpacing: "0.03em",
                       }}
                     >
@@ -186,7 +186,7 @@ export function Experience() {
                 <p
                   style={{
                     fontSize: "0.9rem",
-                    color: "rgba(255,255,255,0.65)",
+                    color: "var(--text-secondary)",
                     lineHeight: 1.8,
                     maxWidth: "60ch",
                     marginBottom: "1.25rem",
@@ -210,7 +210,7 @@ export function Experience() {
                       <span
                         aria-hidden="true"
                         style={{
-                          color: "rgba(255,255,255,0.25)",
+                          color: "var(--text-muted)",
                           flexShrink: 0,
                           fontFamily: "var(--font-mono)",
                           fontSize: "0.8rem",
@@ -223,7 +223,7 @@ export function Experience() {
                       <span
                         style={{
                           fontSize: "0.8rem",
-                          color: "rgba(255,255,255,0.55)",
+                          color: "var(--text-muted)",
                           lineHeight: 1.6,
                         }}
                       >

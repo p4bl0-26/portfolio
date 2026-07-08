@@ -30,7 +30,7 @@ function BrowserFrame({
       className="w-full overflow-hidden"
       style={{
         borderRadius: "8px",
-        border: "1px solid rgba(255,255,255,0.1)",
+        border: "1px solid var(--border)",
         backgroundColor: "var(--bg-card)",
       }}
     >
@@ -39,22 +39,22 @@ function BrowserFrame({
         className="flex items-center gap-1.5 px-3"
         style={{
           height: "28px",
-          borderBottom: "1px solid rgba(255,255,255,0.07)",
-          backgroundColor: "rgba(255,255,255,0.03)",
+          borderBottom: "1px solid var(--border)",
+          backgroundColor: "var(--bg-subtle)",
           flexShrink: 0,
         }}
       >
         <span
           className="w-2.5 h-2.5 rounded-full"
-          style={{ backgroundColor: "rgba(255,255,255,0.12)" }}
+          style={{ backgroundColor: "var(--border-hover)" }}
         />
         <span
           className="w-2.5 h-2.5 rounded-full"
-          style={{ backgroundColor: "rgba(255,255,255,0.12)" }}
+          style={{ backgroundColor: "var(--border-hover)" }}
         />
         <span
           className="w-2.5 h-2.5 rounded-full"
-          style={{ backgroundColor: "rgba(255,255,255,0.12)" }}
+          style={{ backgroundColor: "var(--border-hover)" }}
         />
       </div>
       {/* Screenshot */}
@@ -89,7 +89,7 @@ function PhoneFrame({
         style={{
           width: "clamp(180px, 45%, 260px)",
           borderRadius: "2.5rem",
-          border: "1px solid rgba(255,255,255,0.1)",
+          border: "1px solid var(--border)",
           overflow: "hidden",
           backgroundColor: "var(--bg-card)",
           flexShrink: 0,

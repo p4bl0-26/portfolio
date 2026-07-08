@@ -7,6 +7,8 @@
   --bg-card: #0e0e11;
   --bg-card-hover: #131317;
   --bg-nav: rgba(5, 5, 5, 0.8);
+  --bg-subtle: rgba(255, 255, 255, 0.05);
+  --bg-subtle-hover: rgba(255, 255, 255, 0.1);
 
   /* Text */
   --text-primary: #f2f2f2;
@@ -40,6 +42,8 @@
   --bg-card: #f0f0ec;
   --bg-card-hover: #e8e8e4;
   --bg-nav: rgba(250, 250, 248, 0.85);
+  --bg-subtle: rgba(0, 0, 0, 0.05);
+  --bg-subtle-hover: rgba(0, 0, 0, 0.1);
   --text-primary: #0e0e0e;
   --text-secondary: #555;
   --text-muted: #999;
@@ -77,6 +81,12 @@ body {
 ::selection {
   background-color: var(--accent);
   color: var(--text-on-accent);
+}
+
+/* Placeholders */
+::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
 }
 
 /* Focus rings */

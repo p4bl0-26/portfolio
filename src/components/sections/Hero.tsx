@@ -82,7 +82,7 @@ export function Hero() {
         className="absolute inset-0 pointer-events-none"
         style={{
           backgroundImage:
-            "radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px)",
+            "radial-gradient(circle, var(--border) 1px, transparent 1px)",
           backgroundSize: "32px 32px",
           maskImage:
             "radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%)",
@@ -224,7 +224,7 @@ export function Hero() {
             style={{
               backgroundColor: "transparent",
               color: "var(--text-primary)",
-              border: "1px solid rgba(255,255,255,0.2)",
+              border: "1px solid var(--border-hover)",
               fontFamily: "var(--font-body)",
               fontSize: "1rem",
               fontWeight: 400,
@@ -237,11 +237,11 @@ export function Hero() {
               outlineOffset: "2px",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = "rgba(255,255,255,0.5)";
-              e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.05)";
+              e.currentTarget.style.borderColor = "var(--text-muted)";
+              e.currentTarget.style.backgroundColor = "var(--bg-subtle)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)";
+              e.currentTarget.style.borderColor = "var(--border-hover)";
               e.currentTarget.style.backgroundColor = "transparent";
             }}
             onFocus={(e) => {

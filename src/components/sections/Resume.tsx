@@ -119,7 +119,7 @@ export function Resume() {
                 alignItems: "center",
                 justifyContent: "center",
                 borderRadius: "4px",
-                backgroundColor: "rgba(255,255,255,0.05)",
+                backgroundColor: "var(--bg-subtle)",
                 flexShrink: 0,
               }}
             >

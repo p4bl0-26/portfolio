@@ -125,19 +125,19 @@ export function Nav() {
               height: "40px",
               paddingLeft: "14px",
               paddingRight: "14px",
-              border: "1px solid rgba(255,255,255,0.15)",
-              backgroundColor: "rgba(255,255,255,0.05)",
+              border: "1px solid var(--border)",
+              backgroundColor: "var(--bg-subtle)",
               color: "var(--text-muted)",
               cursor: "pointer",
               minWidth: "120px",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)";
-              e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.08)";
+              e.currentTarget.style.borderColor = "var(--border-hover)";
+              e.currentTarget.style.backgroundColor = "var(--bg-subtle-hover)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
-              e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.05)";
+              e.currentTarget.style.borderColor = "var(--border)";
+              e.currentTarget.style.backgroundColor = "var(--bg-subtle)";
             }}
           >
             <Search size={14} style={{ flexShrink: 0, color: "var(--text-muted)" }} />

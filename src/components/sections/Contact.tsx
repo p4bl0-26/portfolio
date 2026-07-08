@@ -107,7 +107,7 @@ export function Contact() {
       style={{
         fontFamily: "var(--font-mono)",
         fontSize: "14px",
-        color: "rgba(255,255,255,0.5)",
+        color: "var(--text-muted)",
         textDecoration: "none",
         transition: "color 0.2s ease",
       }}
@@ -115,7 +115,7 @@ export function Contact() {
         (e.currentTarget.style.color = "var(--accent)")
       }
       onMouseLeave={(e) =>
-        (e.currentTarget.style.color = "rgba(255,255,255,0.5)")
+        (e.currentTarget.style.color = "var(--text-muted)")
       }
     >
       or email me directly →

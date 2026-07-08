@@ -117,7 +117,7 @@ export function About() {
           <div className="relative flex flex-col space-y-10">
             {/* Continuous vertical line running the full height */}
             <div
-              className="absolute left-[11px] top-2 bottom-4 w-px bg-white/10"
+              className="absolute left-[11px] top-2 bottom-4 w-px bg-[var(--border)]"
               aria-hidden="true"
             />
 
@@ -142,7 +142,7 @@ export function About() {
                     style={{
                       backgroundColor: entry.ongoing
                         ? "var(--accent)"
-                        : "rgba(255,255,255,0.3)",
+                        : "var(--text-muted)",
                     }}
                     aria-hidden="true"
                   />
@@ -154,7 +154,7 @@ export function About() {
                     style={{
                       fontFamily: "var(--font-mono)",
                       fontSize: "11px",
-                      color: "rgba(255,255,255,0.4)",
+                      color: "var(--text-muted)",
                       letterSpacing: "0.06em",
                       lineHeight: "14px",
                     }}
