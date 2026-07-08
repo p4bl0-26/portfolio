@@ -21,7 +21,7 @@ export const PROJECTS: Project[] = [
       github: "https://github.com/Rishit0612/BuildBazaarX_app",
       apk: undefined, // TODO: Add APK download link
     },
-    image: "/images/projects/bbx-seller.png",
+    image: "/images/projects/BuildBazaarX-Seller.jpeg",
     imageAlt: "BuildBazaarX Seller mobile app home screen",
     imageType: "mobile",
   },
@@ -92,33 +92,8 @@ export const PROJECTS: Project[] = [
     links: {
       github: "https://github.com/Rishit0612/Sortd",
     },
-    image: "/images/projects/sortd.png",
+    image: "/images/projects/sortd.jpeg",
     imageAlt: "Sortd campus utility app home dashboard",
-    imageType: "mobile",
-  },
-  {
-    id: "buildbazaarx-professional",
-    index: "05",
-    title: "BuildBazaarX Professional",
-    subtitle: "Flutter · Supabase",
-    description:
-      "Full professional-portal client I'm building solo — auth, complete UI, Supabase sync with the production web platform.",
-    tags: ["Flutter", "Supabase", "Dart"],
-    category: ["Mobile", "Full-Stack"],
-    features: [
-      "Full authentication flow with Supabase Auth",
-      "Real-time dashboard with data sync",
-      "Profile management and settings",
-      "Dark/light adaptive theming",
-      "Reusable widget architecture",
-    ],
-    status: "pre-release",
-    links: {
-      github: "https://github.com/p4bl0-26/Builder_professional",
-      apk: undefined, // TODO: Add APK download link
-    },
-    image: null, // In development — no screenshot yet
-    imageAlt: "BuildBazaarX Professional — in development",
     imageType: "mobile",
   },
 ];
