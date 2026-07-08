@@ -2,30 +2,30 @@ import type { Achievement } from "@/types";
 
 export const ACHIEVEMENTS: Achievement[] = [
   {
-    id: "vibe2ship-2025",
-    date: "2025",
-    title: "Built at Vibe2Ship Hackathon",
-    org: "Vibe2Ship",
-    description:
-      "Shipped Optimus — an AI Chief of Staff — as a cross-platform product in 48 hours. Functional AI pipeline + mobile app on demo day.",
-  },
-  {
     id: "nexora26",
+    title: "Nexora'26 Hackathon — Round 1 Cleared",
+    description: "Built Veritas and cleared Round 1, selected from a field of 200+ participants.",
     date: "2026",
-    title: "Built at Nexora'26 Hackathon",
-    org: "Nexora",
-    description:
-      "Built Veritas — a blockchain + AI digital content authenticity platform — from zero to demo in a single hackathon sprint.",
+    org: "HACKATHON",
+    link: "https://veritas-beta-green.vercel.app/",
+    linkText: "View project ↗",
   },
   {
-    id: "lnmhacks",
-    date: "2025",
-    title: "Participated in LNMHacks",
-    org: "LNMIIT",
-    description:
-      "Built a decentralized workflow engine. First hackathon at LNMIIT — shipped a working on-chain state machine.",
+    id: "codeforces",
+    title: "Codeforces — 138 problems, 38-day streak",
+    description: "138 problems solved with a 38-day daily streak — consistent competitive programming practice.",
+    date: "ONGOING",
+    org: "CP",
+    link: "https://codeforces.com/profile/PABLO_19",
+    linkText: "View profile ↗",
   },
-  // TODO: Add coding contest achievements (LeetCode rating, Codeforces rating, etc.)
-  // TODO: Add certificates and courses
-  // TODO: Add any awards or recognitions
+  {
+    id: "vibe2ship",
+    title: "Shipped Vibe2Ship Hackathon build in 48 hours",
+    description: "Built Optimus — an AI Chief of Staff (Next.js + Flutter + Gemini) — as a working cross-platform product within the hackathon window.",
+    date: "2025",
+    org: "HACKATHON",
+    link: "https://optimus-gray.vercel.app/",
+    linkText: "View project ↗",
+  }
 ];

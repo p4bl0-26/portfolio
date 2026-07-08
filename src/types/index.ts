@@ -47,6 +47,8 @@ export interface Achievement {
   title: string;
   org: string;
   description: string;
+  link?: string;
+  linkText?: string;
 }
 
 export interface NavItem {

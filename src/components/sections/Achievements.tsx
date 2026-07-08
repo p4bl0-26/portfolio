@@ -104,6 +104,25 @@ export function Achievements() {
               >
                 {achievement.description}
               </p>
+              {achievement.link && (
+                <a
+                  href={achievement.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mt-3"
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "0.8125rem", // 13px
+                    color: "var(--accent)",
+                    textDecoration: "none",
+                    transition: "opacity 0.15s ease",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.7")}
+                  onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+                >
+                  {achievement.linkText || "View ↗"}
+                </a>
+              )}
             </div>
           </motion.div>
         ))}

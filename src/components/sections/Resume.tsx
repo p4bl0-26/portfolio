@@ -104,7 +104,7 @@ export function Resume() {
                     color: "var(--text-muted)",
                   }}
                 >
-                  439 KB
+                  8 KB
                 </span>
               </div>
             </div>
