@@ -102,7 +102,9 @@ export function Contact() {
 
   const DirectEmailLink = () => (
     <a
-      href="mailto:himankgarg2604@gmail.com?subject=Hello%20from%20your%20portfolio"
+      href="https://mail.google.com/mail/?view=cm&fs=1&to=himankgarg2604@gmail.com&su=Hello%20from%20your%20portfolio"
+      target="_blank"
+      rel="noopener noreferrer"
       className="link-underline"
       style={{
         fontFamily: "var(--font-mono)",
@@ -455,7 +457,7 @@ export function Contact() {
                   role="alert"
                 >
                   Something went wrong — email me directly at{" "}
-                  <a href="mailto:himankgarg2604@gmail.com" className="underline">
+                  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=himankgarg2604@gmail.com&su=Hello%20from%20your%20portfolio" target="_blank" rel="noopener noreferrer" className="underline">
                     himankgarg2604@gmail.com
                   </a>
                 </span>

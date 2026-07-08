@@ -15,9 +15,9 @@ export const SOCIALS: Social[] = [
   },
   {
     label: "Email",
-    href: "mailto:himankgarg2604@gmail.com",
+    href: "https://mail.google.com/mail/?view=cm&fs=1&to=himankgarg2604@gmail.com&su=Hello%20from%20your%20portfolio",
     handle: "himankgarg2604@gmail.com",
-    external: false,
+    external: true,
   },
   {
     label: "Codeforces",
