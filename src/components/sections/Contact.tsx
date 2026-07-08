@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SectionWrapper } from "@/components/shared/SectionWrapper";
 import { SOCIALS } from "@/constants/socials";
 import { Send } from "lucide-react";
@@ -9,6 +9,7 @@ interface FormState {
   name: string;
   email: string;
   message: string;
+  _gotcha: string; // Honeypot field
 }
 
 export function Contact() {
@@ -16,9 +17,19 @@ export function Contact() {
     name: "",
     email: "",
     message: "",
+    _gotcha: "",
   });
   const [errors, setErrors] = useState<Partial<FormState>>({});
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [canSubmit, setCanSubmit] = useState(false);
+
+  // 3-second delay spam protection
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setCanSubmit(true);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const validate = (): boolean => {
     const newErrors: Partial<FormState> = {};
@@ -27,24 +38,40 @@ export function Contact() {
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
       newErrors.email = "Enter a valid email";
     if (!form.message.trim()) newErrors.message = "Message is required";
-    else if (form.message.trim().length < 20)
-      newErrors.message = "Please write at least 20 characters";
+    else if (form.message.trim().length < 10)
+      newErrors.message = "Please write at least 10 characters";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!canSubmit) return; // Prevent submission before 3 seconds
     if (!validate()) return;
 
-    // TODO: Wire to Formspree or Resend for actual email delivery
-    // For now, opens mailto: with form data pre-filled
-    const subject = encodeURIComponent(`Portfolio contact from ${form.name}`);
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
-    );
-    window.location.href = `mailto:himankgarg2604@gmail.com?subject=${subject}&body=${body}`;
-    setSubmitted(true);
+    setStatus("sending");
+
+    const endpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT || "https://formspree.io/f/mqevoyeq";
+
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(form)
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setForm({ name: "", email: "", message: "", _gotcha: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch (err) {
+      setStatus("error");
+    }
   };
 
   const fieldStyle = {
@@ -151,7 +178,7 @@ export function Contact() {
 
         {/* Right — form */}
         <div>
-          {submitted ? (
+          {status === "success" ? (
             <div
               className="h-full flex flex-col items-start justify-center gap-3 py-12"
             >
@@ -171,43 +198,12 @@ export function Contact() {
                   fontFamily: "var(--font-display)",
                   fontWeight: 600,
                   fontSize: "1.25rem",
-                  color: "var(--text-primary)",
+                  color: "var(--accent)",
                   letterSpacing: "-0.02em",
                 }}
               >
-                Your email client should open.
+                Message sent — I&apos;ll get back to you soon.
               </p>
-              <p
-                style={{
-                  fontSize: "0.875rem",
-                  color: "var(--text-secondary)",
-                }}
-              >
-                If it didn&apos;t, reach out directly at the links on the left.
-              </p>
-              <button
-                onClick={() => setSubmitted(false)}
-                style={{
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "11px",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.1em",
-                  color: "var(--text-muted)",
-                  padding: 0,
-                  marginTop: "0.5rem",
-                }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = "var(--text-secondary)")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.color = "var(--text-muted)")
-                }
-              >
-                Send another message
-              </button>
             </div>
           ) : (
             <form
@@ -216,6 +212,17 @@ export function Contact() {
               noValidate
               aria-label="Contact form"
             >
+              {/* Honeypot Spam Protection */}
+              <input
+                type="text"
+                name="_gotcha"
+                value={form._gotcha}
+                onChange={(e) => setForm(f => ({ ...f, _gotcha: e.target.value }))}
+                style={{ display: "none" }}
+                tabIndex={-1}
+                autoComplete="off"
+              />
+
               {/* Name */}
               <div className="flex flex-col gap-1.5">
                 <label
@@ -250,6 +257,7 @@ export function Contact() {
                       ? "rgba(239, 68, 68, 0.5)"
                       : "var(--border)";
                   }}
+                  disabled={status === "sending"}
                   aria-required="true"
                   aria-invalid={!!errors.name}
                   aria-describedby={errors.name ? "name-error" : undefined}
@@ -303,6 +311,7 @@ export function Contact() {
                       ? "rgba(239, 68, 68, 0.5)"
                       : "var(--border)";
                   }}
+                  disabled={status === "sending"}
                   aria-required="true"
                   aria-invalid={!!errors.email}
                   aria-describedby={errors.email ? "email-error" : undefined}
@@ -357,6 +366,7 @@ export function Contact() {
                       ? "rgba(239, 68, 68, 0.5)"
                       : "var(--border)";
                   }}
+                  disabled={status === "sending"}
                   aria-required="true"
                   aria-invalid={!!errors.message}
                   aria-describedby={
@@ -378,27 +388,54 @@ export function Contact() {
                 )}
               </div>
 
+              {status === "error" && (
+                <span
+                  style={{
+                    fontSize: "13px",
+                    color: "rgb(239, 68, 68)",
+                  }}
+                  role="alert"
+                >
+                  Something went wrong — email me directly at{" "}
+                  <a href="mailto:himankgarg2604@gmail.com" className="underline">
+                    himankgarg2604@gmail.com
+                  </a>
+                </span>
+              )}
+
               <button
                 type="submit"
-                className="flex items-center gap-2.5 w-fit px-5 py-2.5 rounded-md transition-all duration-200"
+                disabled={!canSubmit || status === "sending"}
+                className="inline-flex items-center justify-center rounded-md transition-all duration-200 mt-2 focus-visible:outline-none"
                 style={{
                   backgroundColor: "var(--accent)",
                   color: "var(--text-on-accent)",
                   fontFamily: "var(--font-body)",
-                  fontSize: "14px",
+                  fontSize: "1rem",
                   fontWeight: 500,
+                  textDecoration: "none",
+                  padding: "14px 32px",
                   border: "none",
-                  cursor: "pointer",
+                  cursor: (!canSubmit || status === "sending") ? "not-allowed" : "pointer",
+                  opacity: (!canSubmit || status === "sending") ? 0.7 : 1,
+                  gap: "8px",
+                  outlineOffset: "2px",
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.opacity = "0.88";
+                onFocus={(e) => {
+                  e.currentTarget.style.outline = "2px solid var(--accent)";
                 }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.opacity = "1";
+                onBlur={(e) => {
+                  e.currentTarget.style.outline = "none";
                 }}
               >
-                <Send size={14} />
-                Send Message
+                {status === "sending" ? (
+                  "Sending..."
+                ) : (
+                  <>
+                    <Send size={16} />
+                    Send Message
+                  </>
+                )}
               </button>
             </form>
           )}
