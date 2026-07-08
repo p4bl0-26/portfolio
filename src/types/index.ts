@@ -13,7 +13,9 @@ export interface Project {
     demo?: string;
     apk?: string;
   };
+  image: string | null; // null = no screenshot yet (in-dev)
   imageAlt: string;
+  imageType: "mobile" | "desktop"; // determines which frame to render
 }
 
 export interface ExperienceEntry {
