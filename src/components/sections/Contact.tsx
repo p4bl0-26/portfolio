@@ -31,6 +31,14 @@ export function Contact() {
     return () => clearTimeout(timer);
   }, []);
 
+  const resetForm = () => {
+    setStatus("idle");
+    setCanSubmit(false);
+    setTimeout(() => {
+      setCanSubmit(true);
+    }, 3000);
+  };
+
   const validate = (): boolean => {
     const newErrors: Partial<FormState> = {};
     if (!form.name.trim()) newErrors.name = "Name is required";
@@ -91,6 +99,28 @@ export function Contact() {
       borderColor: "rgba(239, 68, 68, 0.5)",
     } as React.CSSProperties,
   };
+
+  const DirectEmailLink = () => (
+    <a
+      href="mailto:himankgarg2604@gmail.com?subject=Hello%20from%20your%20portfolio"
+      className="link-underline"
+      style={{
+        fontFamily: "var(--font-mono)",
+        fontSize: "14px",
+        color: "rgba(255,255,255,0.5)",
+        textDecoration: "none",
+        transition: "color 0.2s ease",
+      }}
+      onMouseEnter={(e) =>
+        (e.currentTarget.style.color = "var(--accent)")
+      }
+      onMouseLeave={(e) =>
+        (e.currentTarget.style.color = "rgba(255,255,255,0.5)")
+      }
+    >
+      or email me directly →
+    </a>
+  );
 
   return (
     <SectionWrapper id="contact" index="08">
@@ -180,30 +210,58 @@ export function Contact() {
         <div>
           {status === "success" ? (
             <div
-              className="h-full flex flex-col items-start justify-center gap-3 py-12"
+              className="h-full flex flex-col items-start justify-center gap-4 py-12"
             >
-              <span
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "11px",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.1em",
-                  color: "var(--accent)",
-                }}
-              >
-                ✓ Sent
-              </span>
-              <p
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontWeight: 600,
-                  fontSize: "1.25rem",
-                  color: "var(--accent)",
-                  letterSpacing: "-0.02em",
-                }}
-              >
-                Message sent — I&apos;ll get back to you soon.
-              </p>
+              <div className="flex flex-col gap-3">
+                <span
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "11px",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.1em",
+                    color: "var(--accent)",
+                  }}
+                >
+                  ✓ Sent
+                </span>
+                <p
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontWeight: 600,
+                    fontSize: "1.25rem",
+                    color: "var(--accent)",
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  Message sent — I&apos;ll get back to you soon.
+                </p>
+              </div>
+
+              <div className="mt-2 flex flex-col gap-6 items-start">
+                <button
+                  onClick={resetForm}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "11px",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.1em",
+                    color: "var(--text-muted)",
+                    padding: "8px 0",
+                  }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.color = "var(--text-secondary)")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.color = "var(--text-muted)")
+                  }
+                >
+                  Send another message
+                </button>
+                <DirectEmailLink />
+              </div>
             </div>
           ) : (
             <form
@@ -403,40 +461,43 @@ export function Contact() {
                 </span>
               )}
 
-              <button
-                type="submit"
-                disabled={!canSubmit || status === "sending"}
-                className="inline-flex items-center justify-center rounded-md transition-all duration-200 mt-2 focus-visible:outline-none"
-                style={{
-                  backgroundColor: "var(--accent)",
-                  color: "var(--text-on-accent)",
-                  fontFamily: "var(--font-body)",
-                  fontSize: "1rem",
-                  fontWeight: 500,
-                  textDecoration: "none",
-                  padding: "14px 32px",
-                  border: "none",
-                  cursor: (!canSubmit || status === "sending") ? "not-allowed" : "pointer",
-                  opacity: (!canSubmit || status === "sending") ? 0.7 : 1,
-                  gap: "8px",
-                  outlineOffset: "2px",
-                }}
-                onFocus={(e) => {
-                  e.currentTarget.style.outline = "2px solid var(--accent)";
-                }}
-                onBlur={(e) => {
-                  e.currentTarget.style.outline = "none";
-                }}
-              >
-                {status === "sending" ? (
-                  "Sending..."
-                ) : (
-                  <>
-                    <Send size={16} />
-                    Send Message
-                  </>
-                )}
-              </button>
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mt-2">
+                <button
+                  type="submit"
+                  disabled={!canSubmit || status === "sending"}
+                  className="inline-flex items-center justify-center rounded-md transition-all duration-200 focus-visible:outline-none"
+                  style={{
+                    backgroundColor: "var(--accent)",
+                    color: "var(--text-on-accent)",
+                    fontFamily: "var(--font-body)",
+                    fontSize: "1rem",
+                    fontWeight: 500,
+                    textDecoration: "none",
+                    padding: "14px 32px",
+                    border: "none",
+                    cursor: (!canSubmit || status === "sending") ? "not-allowed" : "pointer",
+                    opacity: (!canSubmit || status === "sending") ? 0.7 : 1,
+                    gap: "8px",
+                    outlineOffset: "2px",
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.outline = "2px solid var(--accent)";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.outline = "none";
+                  }}
+                >
+                  {status === "sending" ? (
+                    "Sending..."
+                  ) : (
+                    <>
+                      <Send size={16} />
+                      Send Message
+                    </>
+                  )}
+                </button>
+                <DirectEmailLink />
+              </div>
             </form>
           )}
         </div>
