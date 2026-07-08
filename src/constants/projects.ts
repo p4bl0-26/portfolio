@@ -120,11 +120,11 @@ export const PROJECTS: Project[] = [
     id: "gradegravity",
     index: "05",
     title: "GradeGravity",
-    subtitle: "Flutter · Dart",
+    subtitle: "TypeScript · Web",
     description:
       "A GPA calculator built specifically for LNMIIT students — encoding the actual curriculum: every branch, every semester, every credit weight, and all the exceptions. No generic calculator guesswork.",
-    tags: ["Flutter", "Dart"],
-    category: ["Mobile"],
+    tags: ["TypeScript", "Web"],
+    category: ["Full-Stack"],
     features: [
       "Full LNMIIT curriculum encoded per branch and semester",
       "Handles flexible semesters, S/F courses, and thesis credits",
@@ -134,10 +134,13 @@ export const PROJECTS: Project[] = [
     challenges: [
       "The real work was data, not code: encoding LNMIIT's actual curriculum — every branch, every semester, every credit weight — and handling the exceptions (flexible semesters, S/F courses, thesis credits). Learned that 'simple' tools are mostly domain-knowledge problems wearing a UI.",
     ],
-    status: "wip",
-    links: {},
-    image: null,
-    imageAlt: "GradeGravity LNMIIT GPA calculator",
-    imageType: "mobile",
+    status: "live",
+    links: {
+      github: "https://github.com/p4bl0-26/gradegravity-lnmiit",
+      demo: "https://gradegravity-lnmiit.vercel.app/",
+    },
+    image: "/images/projects/gradegravity.png",
+    imageAlt: "GradeGravity LNMIIT GPA calculator web app",
+    imageType: "desktop",
   },
 ];
